@@ -1,0 +1,187 @@
+body {
+	text-align: center;
+}
+
+.main {
+	width: 600px;
+	min-width: 600px;
+	margin: 0 auto;
+}
+
+.row {
+	height: 51px;
+	text-align: center;
+}
+
+.cellOutter {
+	display: inline-block;
+	vertical-align:top;
+
+	border-right: 1px solid;
+	border-top: 1px solid;
+	border-color: gray;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	padding: 0;
+	margin: 0;
+	text-align: left;
+}
+
+.cellOutter.BGColor1 {
+	background-color: #ffd;
+}
+
+.cellOutter.BGColor2 {
+	background-color: #eff;
+}
+
+.boldUpBoder {
+	border-top: 1px solid black;
+}
+.boldLeftBoder {
+	border-left: 1px solid black;
+}
+.boldDownBoder {
+	border-bottom: 1px solid black;
+}
+.boldRightBoder {
+	border-right: 1px solid black;
+}
+
+.cellInner {
+	text-align: center;
+	display: inline-block;
+	border: 1px silver solid;
+	border-radius: 8px;
+	cursor: pointer;
+
+	width: 48px;
+	height: 48px;
+	line-height: 48px;
+
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+	font-size: 18pt;
+	font-weight: bold;
+	text-shadow: 2px 2px white;
+}
+
+.cellInner.digit {
+	position: static;
+}
+
+.cellInner.digit.done {
+	background-color: gray;
+	color: silver;
+	cursor: not-allowed;
+}
+
+.cellInner.reset {
+	position: static;
+}
+
+.cellInner:hover {
+	background-color: #fde;
+	color: black;
+	text-shadow: 2px 2px #f48;
+}
+
+.cellInner.filled {
+	background-color: blue;
+	color: white;
+	text-shadow: 2px 2px black;
+}
+
+.cellInner.filled.fixed {
+	background-color: maroon;
+	color: silver;
+	text-shadow: 2px 2px gray;
+}
+
+.cellInner.sameDigit {
+	background-color: #f04;
+	width: 44px;
+	height: 44px;
+	line-height: 44px;
+	border: 3px yellow solid;
+	border-radius: 12px;
+}
+
+.cellInner.highlight {
+	width: 44px;
+	height: 44px;
+	line-height: 44px;
+	border: 3px purple solid;
+	border-radius: 12px;
+	background-color: #f26;
+}
+
+.cellInner.warning {
+	width: 44px;
+	height: 44px;
+	line-height: 44px;
+	border: 3px #f42 solid;
+	border-radius: 12px;
+}
+
+.cellInner.filled:hover {
+	background-color: red;
+	text-shadow: 2px 2px gray;
+}
+
+.cellInner.selected {
+	width: 44px;
+	height: 44px;
+	line-height: 44px;
+	border: 3px lime solid;
+	border-radius: 12px;
+	background-color: yellow;
+	color: maroon;
+	text-shadow: 2px 2px #f63;
+}
+
+.cellInner.selected:hover {
+	background-color: #ffe;
+	color: red;
+	text-shadow: 2px 2px orange;
+}
+
+.cellInner.digit.disabled {
+	background-color: silver;
+	color: gray;
+	text-shadow: none;
+	cursor: not-allowed;
+}
+
+.cellInner.digit.done.disabled {
+	background-color: gray;
+	color: silver;
+}
+
+.cellInner.digit.disabled:hover {
+	background-color: silver;
+	color: gray;
+	text-shadow: none;
+}
+
+span.Button {
+	width: 60px;
+	border: solid 1px #666;
+	font-size: 10pt;
+	background-color: #eee;
+	padding: 4px;
+	margin: 0;
+	line-height: 1.7;
+	cursor: pointer;
+}
+
+span.Button:hover {
+	background-color: #8FC;
+	text-decoration: underline;
+	line-height: 1.65;
+}
+
+#json {
+	width: 500px;
+	height: 60px;
+}
