@@ -2,14 +2,11 @@ body {
 	text-align: center;
 }
 
-.main {
-	width: 600px;
-	min-width: 600px;
+.main, .panel {
 	margin: 0 auto;
 }
 
 .row {
-	height: 51px;
 	text-align: center;
 }
 
@@ -20,12 +17,125 @@ body {
 	border-right: 1px solid;
 	border-top: 1px solid;
 	border-color: gray;
-	width: 50px;
-	height: 50px;
-	line-height: 50px;
 	padding: 0;
 	margin: 0;
 	text-align: left;
+}
+
+.cellInner {
+	text-align: center;
+	display: inline-block;
+	border: 1px silver solid;
+	cursor: pointer;
+
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+	font-weight: bold;
+}
+
+.main {
+	width: 350px;
+	min-width: 350px;
+}
+
+.row {
+	height: 31px;
+	min-height: 31px;
+	max-height: 31px;
+	line-height: 31px;
+}
+
+.cellOutter {
+	width: 30px;
+	min-width: 30px;
+	max-width: 30px;
+	height: 30px;
+	min-height: 30px;
+	max-height: 30px;
+	line-height: 30px;
+}
+
+.cellInner {
+	width: 28px;
+	min-width: 28px;
+	max-width: 28px;
+	height: 28px;
+	min-height: 28px;
+	max-height: 28px;
+	line-height: 28px;
+	border-radius: 2px;
+
+	font-size: 12pt;
+	text-shadow: 1px 1px white;
+}
+
+span.Button {
+	font-size: 6pt;
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
+#json {
+	width: 300px;
+	height: 60px;
+}
+
+.pan > .cellInner {
+	margin-left: 2px;
+	margin-right: 2px;
+}
+
+@media (min-width: 640px) {
+	.main {
+		width: 600px;
+		min-width: 600px;
+	}
+
+	.row {
+		height: 51px;
+		min-height: 51px;
+		max-height: 51px;
+		line-height: 51px;
+	}
+
+	.cellOutter {
+		width: 50px;
+		min-width: 50px;
+		max-width: 50px;
+		height: 50px;
+		min-height: 50px;
+		max-height: 50px;
+		line-height: 50px;
+	}
+
+	.cellInner {
+		width: 48px;
+		min-width: 48px;
+		max-width: 48px;
+		height: 48px;
+		min-height: 48px;
+		max-height: 48px;
+		line-height: 48px;
+		border-radius: 8px;
+		font-size: 18pt;
+		text-shadow: 2px 2px white;
+	}
+
+	span.Button {
+		width: 60px;
+		font-size: 10pt;
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+
+	.pan > .cellInner {
+		margin-left: 4px;
+		margin-right: 4px;
+	}
+
+	#json {
+		width: 500px;
+		height: 60px;
+	}
 }
 
 .cellOutter.BGColor1 {
@@ -49,23 +159,6 @@ body {
 	border-right: 1px solid black;
 }
 
-.cellInner {
-	text-align: center;
-	display: inline-block;
-	border: 1px silver solid;
-	border-radius: 8px;
-	cursor: pointer;
-
-	width: 48px;
-	height: 48px;
-	line-height: 48px;
-
-	font-family: Verdana, Helvetica, Arial, sans-serif;
-	font-size: 18pt;
-	font-weight: bold;
-	text-shadow: 2px 2px white;
-}
-
 .cellInner.digit {
 	position: static;
 }
@@ -87,7 +180,7 @@ body {
 }
 
 .cellInner.filled {
-	background-color: blue;
+	background-color: #44c;
 	color: white;
 	text-shadow: 2px 2px black;
 }
@@ -165,12 +258,9 @@ body {
 }
 
 span.Button {
-	width: 60px;
 	border: solid 1px #666;
-	font-size: 10pt;
 	background-color: #eee;
 	padding: 4px;
-	margin: 0;
 	line-height: 1.7;
 	cursor: pointer;
 }
@@ -181,7 +271,3 @@ span.Button:hover {
 	line-height: 1.65;
 }
 
-#json {
-	width: 500px;
-	height: 60px;
-}

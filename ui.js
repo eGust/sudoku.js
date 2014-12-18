@@ -1,8 +1,8 @@
 var selectedCell = null;
 
 function CreateTableObj() {
-	var tab = $('<div>'), pan = $('<div>').addClass('row');
-	pan.append($('<span>').addClass('cellInner').addClass('reset').text('R')).append(' ');
+	var tab = $('<div>'), pan = $('<div>').addClass('row').addClass('pan');
+	pan.append($('<span>').addClass('cellInner').addClass('reset').text('R'));
 	for (var i = 0; i < 9; i++)
 	{
 		var r = $('<div>').addClass('row'), rid = 'r'+i, rcls = 'row'+i;
@@ -13,7 +13,7 @@ function CreateTableObj() {
 		tab.append(r);
 
 		var d = i+1;
-		pan.append($('<span>').addClass('cellInner').addClass('digit').addClass('N'+d).text(d)).append(' ');
+		pan.append($('<span>').addClass('cellInner').addClass('digit').addClass('N'+d).text(d));
 	}
 
 	$('.row0,.row3,.row6', tab).addClass('boldUpBoder');
@@ -170,22 +170,14 @@ function tip(text, style)
 
 $(function () {
 	var tobj = CreateTableObj();
-	$('.main').append(tobj.table).append($('<p>'))
-		//.append($('<div>').addClass('row').append(tobj.panel.hide()))
-		.append($('<div>').addClass('row').append(tobj.panel))
-		.append($('<p>'))
+	$('.main').append(tobj.table).append($('<p>')).append(tobj.panel);
+	$('.panel').append($('<p>'))
 		.append($('<span>').attr('id', 'btnToJSON').addClass('Button').text('Get JSON'))
-		.append("&nbsp;&nbsp;&nbsp;")
 		.append($('<span>').attr('id', 'btnClear').addClass('Button').text('Clear'))
-		.append("&nbsp;&nbsp;&nbsp;")
 		.append($('<span>').attr('id', 'btnStart').addClass('Button').text('Start'))
-		.append("&nbsp;&nbsp;&nbsp;")
 		.append($('<span>').attr('id', 'btnRestart').addClass('Button').text('Restart'))
-		.append("&nbsp;&nbsp;&nbsp;")
 		.append($('<span>').attr('id', 'btnRandom').addClass('Button').text('Generate'))
-		.append("&nbsp;&nbsp;&nbsp;")
 		.append($('<span>').attr('id', 'btnSolve').addClass('Button').text('Solve'))
-		.append("&nbsp;&nbsp;&nbsp;")
 		.append($('<span>').attr('id', 'btnFromJSON').addClass('Button').text('From JSON'))
 		.append($('<p>')).append($('<textarea>').attr('id', 'json'))
 		.append($('<div>').attr('id', 'tip').hide());
@@ -204,6 +196,7 @@ $(function () {
 		//tobj.panel.hide();
 		$('.digit', tobj.panel).removeClass('disabled').removeClass('done').removeClass('selected').show();
 		selectedCell = null;
+		tobj.solution = null;
 		$('#btnStart').text('Start');
 	});
 	
@@ -258,8 +251,8 @@ $(function () {
 	function initGame(table)
 	{
 		var cs = tobj.cells, solution = (new Sudoku()).solve(table);
-		tobj.solution = solution;
 		$('#btnClear').click();
+		tobj.solution = solution;
 		for(var i=0; i<81; i++)
 		{
 			var n = table[i];
