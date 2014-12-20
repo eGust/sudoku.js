@@ -84,20 +84,54 @@ span.Button {
 	margin-right: 2px;
 }
 
+.cellInner.bordered {
+	width: 26px;
+	min-width: 26px;
+	max-width: 26px;
+	height: 26px;
+	min-height: 26px;
+	max-height: 26px;
+	line-height: 26px;
+	border: 2px yellow solid;
+	border-radius: 6px;
+}
+
 @media (min-width: 640px) {
 	.main {
 		width: 600px;
 		min-width: 600px;
 	}
 
+	.cellInner.bordered {
+		width: 46px;
+		min-width: 46px;
+		max-width: 46px;
+		height: 46px;
+		min-height: 46px;
+		max-height: 46px;
+		line-height: 46px;
+		border: 3px yellow solid;
+		border-radius: 12px;
+	}
+
 	.row {
-		height: 51px;
-		min-height: 51px;
-		max-height: 51px;
-		line-height: 51px;
+		height: 53px;
+		min-height: 53px;
+		max-height: 53px;
+		line-height: 53px;
 	}
 
 	.cellOutter {
+		width: 52px;
+		min-width: 52px;
+		max-width: 52px;
+		height: 52px;
+		min-height: 52px;
+		max-height: 52px;
+		line-height: 52px;
+	}
+
+	.cellInner {
 		width: 50px;
 		min-width: 50px;
 		max-width: 50px;
@@ -105,16 +139,6 @@ span.Button {
 		min-height: 50px;
 		max-height: 50px;
 		line-height: 50px;
-	}
-
-	.cellInner {
-		width: 48px;
-		min-width: 48px;
-		max-width: 48px;
-		height: 48px;
-		min-height: 48px;
-		max-height: 48px;
-		line-height: 48px;
 		border-radius: 8px;
 		font-size: 18pt;
 		text-shadow: 2px 2px white;
@@ -193,28 +217,16 @@ span.Button {
 
 .cellInner.sameDigit {
 	background-color: #f04;
-	width: 44px;
-	height: 44px;
-	line-height: 44px;
-	border: 3px yellow solid;
-	border-radius: 12px;
+	border-color: yellow;
 }
 
 .cellInner.highlight {
-	width: 44px;
-	height: 44px;
-	line-height: 44px;
-	border: 3px purple solid;
-	border-radius: 12px;
 	background-color: #f26;
+	border-color: purple;
 }
 
 .cellInner.warning {
-	width: 44px;
-	height: 44px;
-	line-height: 44px;
-	border: 3px #f42 solid;
-	border-radius: 12px;
+	border-color: #f42;
 }
 
 .cellInner.filled:hover {
@@ -223,12 +235,8 @@ span.Button {
 }
 
 .cellInner.selected {
-	width: 44px;
-	height: 44px;
-	line-height: 44px;
-	border: 3px lime solid;
-	border-radius: 12px;
 	background-color: yellow;
+	border-color: lime;
 	color: maroon;
 	text-shadow: 2px 2px #f63;
 }

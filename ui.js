@@ -41,8 +41,8 @@ function CreateTableObj() {
 	function resetClasses()
 	{
 		selectedCell = null;
-		allCells.removeClass('sameDigit').removeClass('highlight').removeClass('selected').removeClass('warning');
-		$('.digit', pan).removeClass('disabled').removeClass('done').removeClass('selected').show();
+		allCells.removeClass('bordered').removeClass('sameDigit').removeClass('highlight').removeClass('selected').removeClass('warning');
+		$('.digit', pan).removeClass('bordered').removeClass('disabled').removeClass('done').removeClass('selected').show();
 		$('.reset', pan).hide();
 		updateDone();
 	}
@@ -58,7 +58,7 @@ function CreateTableObj() {
 		
 		var cs = cell.parent().attr('class'), col = cs.match(/col\d/)[0], row = cs.match(/row\d/)[0], mtx = cs.match(/mtx\d/)[0];
 
-		cell.addClass('selected');
+		cell.addClass('selected').addClass('bordered');
 		selectedCell = cell;
 
 		if(d)
@@ -68,7 +68,7 @@ function CreateTableObj() {
 			dset[row] = 0;
 			dset[mtx] = 0;
 
-			$('.cellInner:not(.selected):contains('+d+')', tab).addClass('sameDigit').each( function(i, c) {
+			$('.cellInner:not(.selected):contains('+d+')', tab).addClass('sameDigit').addClass('bordered').each( function(i, c) {
 				var t = $(c).parent().attr('class'), col = t.match(/col\d/)[0], row = t.match(/row\d/)[0], mtx = t.match(/mtx\d/)[0];
 				dset[col] = 0;
 				dset[row] = 0;
@@ -76,7 +76,7 @@ function CreateTableObj() {
 			});
 
 			var cls =  Object.keys(dset).map(function (k) { return '.'+k; });
-			$('.cellInner:not(.filled)', $('.cellOutter:not(' + cls.join(',') + ')', tab)).addClass('warning');
+			$('.cellInner:not(.filled)', $('.cellOutter:not(' + cls.join(',') + ')', tab)).addClass('warning').addClass('bordered');
 
 			if(!cell.hasClass('fixed'))
 			{
@@ -87,7 +87,7 @@ function CreateTableObj() {
 		}
 		else
 		{
-			var relative = $('.cellInner.filled', $('.'+col+','+'.'+row+','+'.'+mtx, tab)).addClass('highlight'), rd = {};
+			var relative = $('.cellInner.filled', $('.'+col+','+'.'+row+','+'.'+mtx, tab)).addClass('highlight').addClass('bordered'), rd = {};
 			$('.digit', pan).removeClass('disabled').show();
 			relative.each(function (i, c) {
 				var txt = $(c).text().trim();
@@ -122,7 +122,7 @@ function CreateTableObj() {
 			}
 
 			var sc = selectedCell;
-			sc.text(d).addClass('filled').click();
+			sc.text(d).addClass('filled').addClass('bordered').click();
 			if (!$('.cellInner.N'+d, pan).hasClass('done'))
 				sc.click();
 
@@ -138,9 +138,9 @@ function CreateTableObj() {
 			if(sel)
 				return;
 
-			$(this).addClass('selected');
+			$(this).addClass('selected').addClass('bordered');
 			var dset = {};
-			$('.cellInner:contains('+d+')', tab).addClass('sameDigit').each( function(i, c) {
+			$('.cellInner:contains('+d+')', tab).addClass('sameDigit').addClass('bordered').each( function(i, c) {
 				var t = $(c).parent().attr('class'), col = t.match(/col\d/)[0], row = t.match(/row\d/)[0], mtx = t.match(/mtx\d/)[0];
 				dset[col] = 0;
 				dset[row] = 0;
@@ -148,14 +148,14 @@ function CreateTableObj() {
 			});
 
 			var cls =  Object.keys(dset).map(function (k) { return '.'+k; });
-			$('.cellInner:not(.filled)', $('.cellOutter:not(' + cls.join(',') + ')', tab)).addClass('warning');
+			$('.cellInner:not(.filled)', $('.cellOutter:not(' + cls.join(',') + ')', tab)).addClass('warning').addClass('bordered');
 		}
 	});
 
 	$('.reset', pan).click(function () {
 		if((!selectedCell) || $(this).hasClass('disabled'))
 			return;
-		selectedCell.text(' ').removeClass('filled').click();
+		selectedCell.text(' ').removeClass('filled').removeClass('bordered').click();
 	});
 
 	return thisObject;
@@ -191,8 +191,8 @@ $(function () {
 	});
 
 	$('#btnClear').click(function () {
-		tobj.cells.text(' ').removeClass('filled').removeClass('fixed').removeClass('sameDigit')
-			.removeClass('highlight').removeClass('selected').removeClass('warning').removeClass('selected');
+		tobj.cells.text(' ').removeClass('filled').removeClass('fixed').removeClass('bordered')
+			.removeClass('sameDigit').removeClass('highlight').removeClass('selected').removeClass('warning').removeClass('selected');
 		//tobj.panel.hide();
 		$('.digit', tobj.panel).removeClass('disabled').removeClass('done').removeClass('selected').show();
 		selectedCell = null;
@@ -215,10 +215,10 @@ $(function () {
 	});
 	
 	$('#btnRestart').click(function () {
-		$('.digit', tobj.panel).removeClass('disabled').removeClass('done').removeClass('selected').show();
-		tobj.cells.removeClass('sameDigit').removeClass('highlight')
+		$('.digit', tobj.panel).removeClass('disabled').removeClass('done').removeClass('selected').removeClass('bordered').show();
+		tobj.cells.removeClass('bordered').removeClass('sameDigit').removeClass('highlight')
 			.removeClass('selected').removeClass('warning').removeClass('selected');
-		$('.cellInner.filled:not(.fixed)', tobj.table).text(' ').removeClass('filled');
+		$('.cellInner.filled:not(.fixed)', tobj.table).text(' ').removeClass('filled').removeClass('bordered');
 		selectedCell = null;
 		//tobj.panel.hide();
 	});
