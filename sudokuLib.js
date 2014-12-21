@@ -235,6 +235,15 @@ function Sudoku()
 			return result;
 		}
 
+		self.findAllSolutions = function (table) {
+			var found = [];
+			findSolutions(this, table, function(sudoku) 
+				{
+					found.push(sudoku.table.slice());
+				});
+			return found.length ? found : null;
+		}
+
 		Sudoku.generate = function() {
 			const Bases = [ 0, 3, 6 ], Indexes = [ [1, 4], [1, 7], [4, 1], [4, 7], [7, 1], [7, 4], ];
 			var table = [], result = null;
@@ -279,7 +288,12 @@ function Sudoku()
 					table[rb+cb] = t[Math.floor(Math.random()*t.length)];
 				}
 
-				result = Sudoku.checker.solve(table);
+				result = Sudoku.checker.findAllSolutions(table);
+				if (result)
+				{
+					//console.log(result.length);
+					result = result[Math.floor(Math.random()*result.length)];
+				}
 			} while (!result);
 			return result;
 		}
